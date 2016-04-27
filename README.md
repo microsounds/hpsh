@@ -1,7 +1,7 @@
 ## hpsh - Stack-based Reverse Polish Notation Calculator
 ![version] ![license]
 
-```hpsh``` is a minimal implementation of Entry RPN that recreates the feel of Helwitt-Packard RPN calculators.
+```hpsh``` is a minimal implementation of Entry RPN that recreates the feel of Hewlett-Packard RPN calculators.
 
 A CLI-based RPN interpreter with an unlimited stack depth!
 
