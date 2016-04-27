@@ -22,7 +22,7 @@ clean:
 	rm -rf $(OUTPUT)
 	
 install: all
-	cp $(OUTPUT) $(INSTALLDIR)
+	mv $(OUTPUT) $(INSTALLDIR)
 
 uninstall:
 	rm -rf $(INSTALLDIR)/$(OUTPUT)
