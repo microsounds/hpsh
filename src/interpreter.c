@@ -80,6 +80,11 @@ void strip_newlines(char *str)
 	}
 }
 
+int is_digit(const char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 int interpreter(const char *token)
 {
 	int i;
@@ -97,8 +102,8 @@ void lexer(char *input, list_t *stack)
 	char *tok = strtok(input, " ");
 	while (tok != NULL)
 	{
-		if ( (tok[0] == '-' && strlen(tok) > 1) || /* if negative val */
-		     (tok[0] >= '0' && tok[0] <= '9') ) /* or if digit */
+		/* if negative or positive value */
+		if ((tok[0] == '-' && is_digit(tok[1]) || is_digit(tok[0])))
 		{
 			double val = atof(tok);
 			stack_push(stack, val);
@@ -111,7 +116,11 @@ void lexer(char *input, list_t *stack)
 				if (stack->depth >= LOOKUP[cmd].args)
 					LOOKUP[cmd].op(stack); /* execute func pointer */
 				else
-					fprintf(stderr, "[!] %s requires %u operands.\n", LOOKUP[cmd].name, LOOKUP[cmd].args);
+				{
+					const char *name = LOOKUP[cmd].name;
+					unsigned args = LOOKUP[cmd].args;
+					fprintf(stderr, "[!] %s requires %u operands.\n", name, args);
+				}
 			}
 			else
 				fprintf(stderr, "[!] '%s' is not a valid token.\n", tok);
