@@ -1,3 +1,5 @@
+0.3.0
+	Bumped supported RPN commands to 15.
 0.2.1
 	Improved lexer parsing.
 0.2.0

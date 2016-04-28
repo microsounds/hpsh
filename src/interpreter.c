@@ -38,8 +38,19 @@ static const cmd_t LOOKUP[SUPPORTED_COMMANDS] = {
 	/* from op_rpn.c */
 	{ .token = "clear", .name = "CLEAR", .args = 0, .op = &op_rpn_clear },
 	{ .token = "drop", .name = "DROP", .args = 1, .op = &op_rpn_drop },
+	{ .token = "drop2", .name = "DROP2", .args = 2, .op = &op_rpn_drop2 },
+	{ .token = "dropn", .name = "DROPN", .args = 1, .op = &op_rpn_dropn },
 	{ .token = "swap", .name = "SWAP", .args = 2, .op = &op_rpn_swap },
+	{ .token = "pick", .name = "PICK", .args = 1, .op = &op_rpn_pick },
+	{ .token = "unpic", .name = "UNPIC", .args = 1, .op = &op_rpn_unpic },
 	{ .token = "dup", .name = "DUP", .args = 1, .op = &op_rpn_dup },
+	{ .token = "dup2", .name = "DUP2", .args = 2, .op = &op_rpn_dup2 },
+	{ .token = "dupn", .name = "DUPN", .args = 1, .op = &op_rpn_dupn },
+	{ .token = "over", .name = "OVER", .args = 2, .op = &op_rpn_over },
+	{ .token = "pick3", .name = "PICK3", .args = 3, .op = &op_rpn_pick3 },
+	{ .token = "rot", .name = "ROT", .args = 3, .op = &op_rpn_rot },
+	{ .token = "unrot", .name = "UNROT", .args = 3, .op = &op_rpn_unrot },
+	{ .token = "depth", .name = "DEPTH", .args = 0, .op = &op_rpn_depth },
 	/* from interpreter.c */
 	{ .token = "quit", .name = "QUIT", .args = 0, .op = &op_cli_quit },
 	{ .token = "help", .name = "HELP", .args = 0, .op = &op_cli_help },
@@ -103,7 +114,7 @@ void lexer(char *input, list_t *stack)
 	while (tok != NULL)
 	{
 		/* if negative or positive value */
-		if ((tok[0] == '-' && is_digit(tok[1]) || is_digit(tok[0])))
+		if ((tok[0] == '-' && is_digit(tok[1])) || is_digit(tok[0]))
 		{
 			double val = atof(tok);
 			stack_push(stack, val);
