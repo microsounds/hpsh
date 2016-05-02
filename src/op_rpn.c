@@ -90,7 +90,6 @@ void op_rpn_unpic(list_t *stack)
 		fprintf(stderr, "[!] Stack level %lld does not exist.\n", drop);
 }
 
-
 void op_rpn_dup(list_t *stack)
 {
 	stack_push(stack, stack->head->data);
@@ -136,7 +135,6 @@ void op_rpn_pick3(list_t *stack)
 	/* or you could push 3 and call op_rpn_pick() */
 	stack_push(stack, stack->head->next->next->data);
 }
-
 
 void op_rpn_rot(list_t *stack)
 {
