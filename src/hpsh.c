@@ -37,7 +37,7 @@ struct {
 	const char *license;
 } a = {
 	.name = "hpsh",
-	.ver = "0.3.0",
+	.ver = "0.3.1",
 	.date = "2016",
 	.author = "microsounds",
 	.license = "GPLv3+",
