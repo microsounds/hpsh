@@ -46,8 +46,8 @@ void op_rpn_swap(list_t *stack)
 {
 	double val1 = stack_pop(stack);
 	double val2 = stack_pop(stack);
-	stack_push(stack, val2);
 	stack_push(stack, val1);
+	stack_push(stack, val2);
 }
 
 void op_rpn_pick(list_t *stack)
